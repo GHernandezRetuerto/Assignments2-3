@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>d3.js data driven page</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <Part1>
+        <!-- With an <input> tag that allows to write some text -->
+        <label for="text">Write something!</label>
+        <input type="text" id="text" name="Text">
+
+    </Part1>
+
+    <Part2>
+        <!-- With a <button> that adds <p> paragraphs to the page containing the content of the  <input> created above -->
+        <br/>
+        <label for="number">How many copies?</label>
+        <script>
+
+        function printP(){
+            var n = document.getElementById('number').value;
+            var container = document.getElementById('container');
+            var my_html = '';
+            for (var i = 0; i < n; i++) {
+                // Create the text for the paragraph
+                var newtext = document.getElementById('text').value;
+                // Add the text inside <p></p>, inside my_html
+                my_html += '<p>' + newtext + '</p>';
+                my_html += '<br/>';
+                }
+            // Print the paragraph
+            container.innerHTML = my_html;
+            alert('Paragraphs printed.')
+        }
+        </script>
+        <input type="number" id="number" name="Number" min="1">
+        <button onclick="printP()">Print it</button>
+    </Part2>
+
+    <Part3>
+        <!-- Two other <button> tags that change the color of all <p> tags in blue and red respectively -->
+        <!-- However, a colorpicker is better -->
+        <script>
+        function colorP(){
+            var col = document.getElementById('colorpicker').value;
+            d3.selectAll("p").style("color", col);
+            alert('Color changed.')
+        }
+        </script>
+        <br/>
+        <label for="colorpicker">Chooose a color:</label>
+        <input type="color" id="colorpicker" value="#0000ff">
+        <button onclick="colorP()">Change the color</button>
+    </Part3>
+
+    <Test>
+        <p>Test Paragraph</p>
+        <br/>
+
+    </Test>
+
+    <h1> The paragraphs:</h1>
+
+    <div id="container"></div>
+</body>
+</html>
