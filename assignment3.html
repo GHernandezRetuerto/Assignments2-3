@@ -11,8 +11,29 @@
     <br/>
     <div id="Part1">
         <!--Render a <table> by selecting the data from the files data1.csv and data2.csv according to the content of a <select> tag by responding an onchange event. -->
-        <select id="selector" onchange="myFunction()">Choose a column</select>
+        <label for="selector">Choose a Dataset</label>
+        <select id="selector" onchange="myFunction()">
+            <option value="data1">Data 1</option>
+            <option value="data1">Data 2</option>
+        </select>
         <table id="dataTable"></table>
+        <script>
+            url1 = false ? "data1" : "https://github.com/GHernandezRetuerto/Assignments2-3/blob/master/data1.csv"
+            url2 = false ? "data2" : "https://github.com/GHernandezRetuerto/Assignments2-3/blob/master/data2.csv"
+            d3.csv(csv_url),
+            (d,i,c) => {
+                if (i>10) return d
+                d3.select("table")
+                .append("tr")
+                .selectAll("td")
+                .data(c).enter()
+                .append("td").text(e => d[e])
+            })
+
+            function colorP() {
+                d3.selectAll("p").style("color", "red");
+            }
+        </script>
     </div>
 
     <div id="Part2">
