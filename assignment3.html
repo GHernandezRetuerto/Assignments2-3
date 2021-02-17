@@ -25,7 +25,7 @@
             // conditional between url1 y url2?
             d3.csv(url1,
             function(data) {
-                var dat = d3.csv(data); // parseRows() treats the header line as a standard row
+                var dat = d3.csv(data); // parseRows() treats the header line as a standard row, csv() does not
                 d3.select("container")
                     .append("dataTable")
                     .selectAll("tr")
