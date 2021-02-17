@@ -20,16 +20,16 @@
 
         <script>
             // need to call TableCreator()
-            url1 = false ? "data1" : "https://github.com/GHernandezRetuerto/Assignments2-3/blob/master/data1.csv"
-            url2 = false ? "data2" : "https://github.com/GHernandezRetuerto/Assignments2-3/blob/master/data2.csv"
+            var url1 = "https://github.com/GHernandezRetuerto/Assignments2-3/blob/master/data1.csv"
+            var url2 = "https://github.com/GHernandezRetuerto/Assignments2-3/blob/master/data2.csv"
             // conditional between url1 y url2?
             d3.csv(url1,
             function(data) {
-                var dataParsed = d3.csv.parseRows(data); // parseRows() treats the header line as a standard row
+                var dat = d3.csv(data); // parseRows() treats the header line as a standard row
                 d3.select("container")
                     .append("dataTable")
                     .selectAll("tr")
-                        .data(dataParsed).enter()
+                        .data(dat).enter()
                         .append("tr")
                     .selectAll("td")
                         .data(function(d) { return d; }).enter()
@@ -37,10 +37,10 @@
                         .text(function(d) { return d; });
             });
         </script>
-        <div id="container"></div>
+
     </div>
 
-
+    <div id="container"></div>
 
     <div id="Part2">
         <!-- If a numeric column is selected, print in a <p> tag the mean of the column -->
