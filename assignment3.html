@@ -32,8 +32,8 @@
                         .append("tr")
                         .selectAll("td")
                         .data(c).join("td").text(e => d[e])
+                    })
                     console.log("Table created with data 1")
-                })
                 }
                 else if (document.getElementById("selector").value == "data2"){
                     url = false ? "data2.csv": "https://raw.githubusercontent.com/GHernandezRetuerto/Assignments2-3/master/data2.csv"
@@ -45,8 +45,8 @@
                         .append("tr")
                         .selectAll("td")
                         .data(c).join("td").text(e => d[e])
+                    })
                     console.log("Table created with data 2")
-                })
                 }
                 else {console.log("error: no data selected") }
             }
