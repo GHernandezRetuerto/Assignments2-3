@@ -12,30 +12,28 @@
     <div id="Part1">
         <!--Render a <table> by selecting the data from the files data1.csv and data2.csv according to the content of a <select> tag by responding an onchange event. -->
         <label for="selector">Choose a Dataset</label>
-        <select id="selector" onchange="TableCreator">
+        <select id="selector">
             <option value="data1">Data 1</option>
             <option value="data1">Data 2</option>
         </select>
+
+        <button onclick="createTable()">Click</button>
+
         <table id="dataTable"></table>
 
         <script>
             // need to call TableCreator()
-            var url1 = "https://github.com/GHernandezRetuerto/Assignments2-3/blob/master/data1.csv"
-            var url2 = "https://github.com/GHernandezRetuerto/Assignments2-3/blob/master/data2.csv"
+            url1 = false ? "data1.csv": "https://raw.githubusercontent.com/GHernandezRetuerto/Assignments2-3/master/data1.csv"
+            url2 = false ? "data2.csv": "https://raw.githubusercontent.com/GHernandezRetuerto/Assignments2-3/master/data2.csv"
             // conditional between url1 y url2?
-            d3.csv(url1,
-            function(data) {
-                var dat = d3.csv(data); // parseRows() treats the header line as a standard row
-                d3.select("container")
-                    .append("dataTable")
-                    .selectAll("tr")
-                        .data(dat).enter()
-                        .append("tr")
+            createTable = function(){
+                d3.csv(url1,
+                (d,i,c) => {
+                    d3.select("dataTable")
+                    .append("tr")
                     .selectAll("td")
-                        .data(function(d) { return d; }).enter()
-                        .append("td")
-                        .text(function(d) { return d; });
-            });
+                    .data(c).join("td").text(e => d[e])
+                })}
         </script>
 
     </div>
